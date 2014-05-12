@@ -4,7 +4,14 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.4'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+group :development, :test do
+	gem 'sqlite3'
+end
+
+group :production do
+	gem 'pg'
+	gem 'rails_12factor'
+end
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
@@ -27,6 +34,24 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+# BDD and debugging
+group :development do
+	gem 'capybara', '~> 2.2.1'
+	gem 'rspec-rails', '~> 2.14.0'
+	gem 'factory_girl_rails', '~> 4.4.0'
+	gem 'database_cleaner', '~> 1.2.0'
+	gem 'launchy', '~> 2.4.2'
+	gem 'faker', '~> 1.3.0'
+	gem 'pry'
+	gem 'pry-remote'
+	gem 'pry-nav'
+end
+
+# Authentication, authorization, managing secrets
+gem 'devise'
+gem 'pundit'
+gem 'figaro'
+	
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
