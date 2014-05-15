@@ -35,7 +35,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 # BDD and debugging
-group :development do
+group :development, :test do
 	gem 'capybara', '~> 2.2.1'
 	gem 'rspec-rails', '~> 2.14.0'
 	gem 'factory_girl_rails', '~> 4.4.0'
