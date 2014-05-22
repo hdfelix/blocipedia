@@ -13,7 +13,7 @@ class Wikis::PagesController < ApplicationController
 
 		if @page.save
 			flash[:notice] = "Page saved."
-			redirect_to @page
+			redirect_to @wiki
 		else
 			flash[:error] = "There was an error saving the page. Please try again."
 			render :new
