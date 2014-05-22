@@ -1,10 +1,10 @@
 Blocipedia::Application.routes.draw do
 
 	resources :wikis do
-		resources :pages, exept: [:index]
+		resources :pages, except: [:index], controller: 'wikis/pages'
 	end
 
-	resources :wikis, only: [:index, :new, :create, :show]
+	#resources :wikis
 
   get "welcome/index"
   devise_for :users

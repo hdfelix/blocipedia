@@ -35,6 +35,11 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+#Markdown
+gem 'redcarpet'
+
+#Pagination
+gem 'will_paginate', '~>3.0.5'
 # BDD and debugging
 group :development, :test do
 	gem 'capybara', '~> 2.2.1'
