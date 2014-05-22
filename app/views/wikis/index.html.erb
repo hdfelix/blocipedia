@@ -1,13 +1,9 @@
 <h1>Wikis List</h1>
 
 <%if @wikis.count > 0 %>
-	<ul>
-		<% @wikis.each do |wiki| %>
-			<li><%= wiki.title %></li>
-		<% end %>	
-	</ul>
+	<%= render partial: 'wiki', collection: @wikis %>
 <% else %>
 	<p>No wikis have been created.</p>
 <% end %>
 <br />
-<%=link_to 'New Wiki', new_wiki_path %>
+<%=link_to 'Create a Wiki', new_wiki_path %>

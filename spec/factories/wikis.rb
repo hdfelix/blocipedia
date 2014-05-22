@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :wiki do
-		title { Faker::Lorem.words 3, false }
+		title { Faker::Lorem.words(3, false).join(' ') }
 		description { Faker::Lorem.sentence }
     user
   end

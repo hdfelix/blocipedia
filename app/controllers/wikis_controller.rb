@@ -21,7 +21,23 @@ class WikisController < ApplicationController
 
 	def show
 		@wiki = Wiki.find(params[:id])
+		@pages = @wiki.pages
 	end
+
+	def edit
+		@wiki = Wiki.find(params[:id])
+	end
+
+def update
+	@wiki = Wiki.find(params[:id])
+
+	if @wiki.update_attributes(wiki_params)
+		redirect_to @wiki
+	else
+		flash[:error] = "Error saving wiki. Please try again."
+		render :edit
+	end
+end
 
 	private
 
