@@ -43,6 +43,7 @@ feature 'User clicks \'Wikis list\'' do
 	end
 
 	scenario 'Views \'no wikis\' message if no wikis exist' do
+		puts "current wikis: #{Wiki.all.count}"
 		visit root_path
 		click_link 'Wikis list'
 		expect(page).to have_content('No wikis have been created.')
