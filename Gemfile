@@ -40,6 +40,10 @@ gem 'redcarpet'
 
 #Pagination
 gem 'will_paginate', '~>3.0.5'
+
+# Process payments
+gem 'stripe', git: 'https://github.com/stripe/stripe-ruby'
+
 # BDD and debugging
 group :development, :test do
 	gem 'capybara', '~> 2.2.1'
