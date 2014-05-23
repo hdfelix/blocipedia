@@ -1,9 +1,6 @@
-<br />
-<div class="row">
-	<div class="col-md-8">
-		<div class="media-body">
-			<h4 class="media-heading"><%= link_to wiki.title, wiki %></h4>
-			<p class="wiki-description"><%= wiki.description %></p> 
-		</div>
-	</div>
+<div class="media-body">
+	<h4 class="media-heading"><%= wiki.title %> (<%=link_to "#{wiki.pages.count} #{'page'.pluralize})", wiki %></h4>
+	<p class="wiki-description"><%= wiki.description %></p> 
+	<%= link_to 'Edit', edit_wiki_path(wiki), class: 'btn btn-success' %>&nbsp;
 </div>
+<hr />

@@ -5,14 +5,14 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 </head>
 <body>
-	<div class="container">
+	<div class="container-fluid">
 		<ul class="nav nav-tabs">
 			<li><%= link_to "Home", welcome_index_path %></li>
 			<li><%= link_to "Wikis", wikis_path %></li>
-
-			<div class="pull-right user-info">
+<div class="pull-right user-info">
 				<% if current_user %>
 					Hello <%= current_user.name %>! <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
 			<% else %>

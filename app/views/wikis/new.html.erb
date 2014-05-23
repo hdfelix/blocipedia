@@ -1,11 +1,20 @@
 <h1>Create a Wiki</h1>
 
-<%= form_for @wiki do |f| %>
-	<%= f.label :title %>
-	<%= f.text_field :title, autofocus: true %>
-
-	<%= f.label :description %>
-	<%= f.text_field :description %>
-
-	<%= f.submit %>
-<% end %>
+<div class="row">
+	<div class="col-md-8">
+		<%= form_for @wiki do |f| %>
+			<div class='form-group'>
+				<%= f.label :title %>
+				<%= f.text_field :title, class: 'form-control', autofocus: true %>
+			</div>
+			<div class='form-group'>
+				<%= f.label :description %>
+				<%= f.text_field :description, class: 'form-control' %>
+			</div>
+			<div class='form-group'>
+				<%= f.submit class: 'btn btn-success' %>&nbsp;
+				<%= link_to 'Cancel', wikis_path, class: 'btn btn-default' %>
+			</div>
+		<% end %>
+	</div>
+</div>

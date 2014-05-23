@@ -1,13 +1,69 @@
 @import "bootstrap";
 
+/* Header */
+
 .user-info {
 	margin-top: 9px;
 }
 
 .nav {
-	margin-top: 5px 
+	margin-top: 5px;
+	padding-right: 15px;
+	background-color: #484043;
+	color: #ffffff;
+}
+
+ul li a {	
+	color: #ffffff;
 }
 
 .wiki-description {
 	margin-left: 10px
 } 
+
+/* Body */
+body {
+	font-family: Raleway;
+}
+/* Welcome page */
+.jumbotron {
+	color: #ffffff;
+	background: #6E6568;
+}
+
+.jumbotron a {
+	color: #ffffff;
+}
+
+/* Wiki lists */
+.media-body {
+	padding: 5px;
+}
+
+.media-heading {
+	border: 1px;
+	border-color: #484043;
+}
+
+.btn-success {
+	background: #6E6568;
+	border-color: #6E6568;
+}
+
+.btn:hover {
+	background: #484043;
+}
+
+.sign-up {
+	background: #FFCC00;
+	border-color: #FFCC00;
+	color: #6E6568;
+}
+
+.sign-up:hover {
+	border-color: #6E6568;
+}
+
+.verticalline {
+	border-left: solid #6E6568;
+}

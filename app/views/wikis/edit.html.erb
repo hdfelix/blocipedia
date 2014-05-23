@@ -16,7 +16,8 @@
 				 <!--%= f.check_box :public %> Public wiki -->
          <!--% end %-->
        <!--/div-->
-       <%= f.submit "Save", class: 'btn btn-success' %>
+			 <%= f.submit "Save", class: 'btn btn-success' %>&nbsp;
+			 <%= link_to "Cancel", wikis_path, class: 'btn btn-default' %>
      <% end %>
    </div>
  </div>

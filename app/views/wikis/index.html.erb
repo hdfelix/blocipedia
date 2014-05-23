@@ -1,9 +1,13 @@
-<h1>Wikis List</h1>
-
-<%if @wikis.count > 0 %>
-	<%= render partial: 'wiki', collection: @wikis %>
-<% else %>
-	<p>No wikis have been created.</p>
-<% end %>
 <br />
-<%=link_to 'Create a Wiki', new_wiki_path %>
+<div class="panel panel-default">
+	<div class="panel-heading text-center"><span style="font-size:28px">Free Wikis</span></div>
+	<div class="panel-body">
+		<%if @wikis.count > 0 %>
+			<%= render partial: 'wiki', collection: @wikis %>
+		<% else %>
+			<p>No wikis have been created.</p>
+		<% end %>
+		<br />
+	</div>
+</div>
+<%=link_to 'Create a Wiki', new_wiki_path, class:'btn btn-success' %>
