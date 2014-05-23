@@ -32,9 +32,9 @@ class Wikis::PagesController < ApplicationController
 
   def update
 		@wiki = Wiki.find(params[:wiki_id])
-		@page = @wiki.pages.build(page_params)
+		@page = Page.find(params[:id])
 
-		if @page.save
+		if @page.update_attributes(page_params)
 			flash[:notice] = "Page was saved."
 			redirect_to [@wiki, @page]
 		else
