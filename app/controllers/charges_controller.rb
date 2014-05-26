@@ -11,11 +11,9 @@ class ChargesController < ApplicationController
 				amount: 1_00
 			}
 		}
-			binding.pry
 	end
 
 	def create
-		binding.pry
 		@amount = params[:amount]
 
 		#Creates a Stripe Customer object, for associating with the charge
