@@ -17,6 +17,7 @@
          <!--% end %-->
        <!--/div-->
 			 <%= f.submit "Save", class: 'btn btn-success' %>&nbsp;
+			 <%= link_to "Delete", @wiki, method: :delete, class: 'btn btn-danger' %>
 			 <%= link_to "Cancel", wikis_path, class: 'btn btn-default' %>
      <% end %>
    </div>

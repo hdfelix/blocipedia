@@ -1,7 +1,10 @@
 require 'faker'
 
 #create Users
-5.times do
+user_count = 5
+puts "Creating #{user_count} users:"
+user_count.times do
+	print "."
 	user = User.new(
 		 name:			Faker::Name.name,
 		 email:			Faker::Internet.email,
@@ -12,20 +15,30 @@ require 'faker'
 end
 
 # Create Wikis
-15.times do
+wiki_count = 15
+puts "\nCreating #{wiki_count} wikis:"
+wiki_count.times do
+	print "."
 	Wiki.create(
 		title:				Faker::Lorem.sentence,
-		description:	Faker::lorem.paragraph
+		description:	Faker::Lorem.paragraph
 		)
 end
 
-wikis = Wikis.all
+#Adding pages to wikis
+puts "\nCreate random # of pages in wikis"
 
-50.times do
-	Page.create(
-		user:			users.sample,
-		wiki:			wikis.sample,
-		title:		Faker::Lorem.sentence,
-		body:			Faker::Lorem.paragraph
-	)
+@wikis = Wiki.all 
+@wikis.each do |w|
+	page_count.times do
+		print "."	
+		w.pages.create(
+			#User.find(rand(1..5)).user_id,
+			title:		Faker::Lorem.sentence,
+			body:			Faker::Lorem.paragraph
+		)
+	end
 end
+
+puts "\n\n"
+

@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
 	protected
 
 	def configure_permitted_parameters
-		devise_parameter_sanitizer.for(:sign_up) << :name
+		#Allow the attributes to be accessible at sign up.
+		devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:name, :stripe_card_token, :email, :password) }
+		devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:name, :stripe_card_token) }
 	end
 end

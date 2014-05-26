@@ -1,5 +1,5 @@
 <div class="media-body">
-	<h4 class="media-heading"><%= wiki.title %> (<%=link_to "#{wiki.pages.count} #{'page'.pluralize})", wiki %></h4>
+	<h4 class="media-heading"><%= wiki.title %> (<%=link_to "#{wiki.pages.count} #{'page'.pluralize})", wiki %></h4> <span style="color: red"><%= (wiki.public)? "FREE":"" %></span>
 	<p class="wiki-description"><%= wiki.description %></p> 
 	<%= link_to 'Edit', edit_wiki_path(wiki), class: 'btn btn-success' %>&nbsp;
 </div>

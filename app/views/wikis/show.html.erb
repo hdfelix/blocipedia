@@ -14,7 +14,7 @@
 <hr />
 <div class="panel panel-default">
 	<div class="panel panel-header text-center"><span style="font-size: 28px">Pages</span></div>
-		<% if Page.all.count > 0 %>
+		<% if @wiki.pages.count > 0 %>
 			<%= render @pages %>
 			<!--%= will_paginate @pages %-->
 		<% else %>
