@@ -15,10 +15,12 @@ class User < ActiveRecord::Base
 	def create_customer
 		token = self.stripe_card_token
 
-		customer = Stripe::Customer.create(
-								card: token,
-								plan: 'bp_premium',
-								email: self.email
-		)
+		unless self.stripe_card_token.blank?
+			customer = Stripe::Customer.create(
+									card: token,
+									plan: 'bp_premium',
+									email: self.email
+			)
+		end
 	end
 end
