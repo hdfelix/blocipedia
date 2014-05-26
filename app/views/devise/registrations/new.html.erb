@@ -4,6 +4,9 @@
 	<div class="col-md-8">
 		<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 			<%= devise_error_messages! %>
+
+			<%= f.hidden_field :stripe_card_token %>
+			
 			<div class="form-group">
 				<%= f.label :name %>
 				<%= f.text_field :name, class: 'form-control', autofocus: true %>
@@ -20,10 +23,29 @@
 				<%= f.label :password_confirmation %>
 				<%= f.password_field :password_confirmation, class: 'form-control', autocomplete: "off" %>
 			</div>
-			<div class="form-group">
+			<% if params[:t] == 'premium' %>
+				<br />
+				<h4>Credit Card Info</h4>
+				<div class="col-md-4">
+					<% if @user.stripe_card_token.present? %>
+						Credit card has been provided.
+					<% else %>
+						<div class="form-group">
+							<%= label_tag :card_number, "Credit Card Number" %>
+							<%= text_field_tag :card_number, nil, name: nil, class: 'form-control' %>
+						</div>
+						<div class="form-group>
+							<%= label_tag :card_code, "Security Code on Card (CVV)" %>
+							<%= text_field_tag :card_code, nil, name: nil, class:  'form-control' %><br />
+							<%= label_tag :card_month, "Card Expiration" %><br />
+							<%= select_month nil, { add_month_numbers: true }, { name: nil, id: "card_month" } %>
+							<%= select_year nil, { start_year: Date.today.year, end_year: Date.today.year + 15 }, { name: nil, id: "card_year" } %><br /><br />
+						</div>
+					<% end %>
+				</div>
+			<% end %>
+			<div class="form-group col-md-12">
 				<%= f.submit "Sign up", class: 'btn btn-success' %>
-			</div>
-			<div class="form-group">
 				<%= render "devise/shared/links" %>
 			</div>
 		<% end %>
