@@ -30,7 +30,7 @@ puts "\nCreate random # of pages in wikis"
 
 @wikis = Wiki.all 
 @wikis.each do |w|
-	page_count.times do
+	rand(2..7).times do
 		print "."	
 		w.pages.create(
 			#User.find(rand(1..5)).user_id,
