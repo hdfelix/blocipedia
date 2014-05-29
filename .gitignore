@@ -29,3 +29,6 @@
 
 #Ignore file with env variables
 .env
+
+# Ignore source_maps directory
+public/assets/source_maps/*

@@ -4,23 +4,23 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
-	has_many :wikis
-	validates :name, presence: true
-	after_create :create_customer
+  has_many :wikis
+  validates :name, presence: true
+  after_create :create_customer
 
-	def role?(base_role)
-		role == base_role.to_s
-	end
+  def role?(base_role)
+    role == base_role.to_s
+  end
 
-	def create_customer
-		token = self.stripe_card_token
-
-		unless self.stripe_card_token.blank?
-			customer = Stripe::Customer.create(
-									card: token,
-									plan: 'bp_premium',
-									email: self.email
-			)
-		end
-	end
+  def create_customer
+    token = self.stripe_card_token
+    #binding.pry
+    unless self.stripe_card_token.blank?
+      customer = Stripe::Customer.create(
+        card: token,
+        plan: 'bp_premium',
+        email: self.email
+      )
+    end
+  end
 end

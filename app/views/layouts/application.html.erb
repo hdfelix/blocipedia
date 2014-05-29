@@ -1,48 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Blocipedia</title>
-	<%= javascript_include_tag "https://js.stripe.com/v1/", type: 'text/javascript' %>
-	<%= javascript_tag "Stripe.publishableKey = '#{Rails.configuration.stripe[:publishable_key]}';", type: 'text/javascript' %>
+<title>Blocipedia</title>
+<%= javascript_include_tag "https://js.stripe.com/v1/", type: 'text/javascript' %>
+<%= javascript_tag "Stripe.publishableKey = '#{Rails.configuration.stripe[:publishable_key]}';", type: 'text/javascript' %>
 
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+<%= csrf_meta_tags %>
+<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 </head>
 <body>
-	<div class="container-fluid">
-		<ul class="nav nav-tabs">
-			<li><%= link_to "Home", welcome_index_path %></li>
-			<li><%= link_to "Wikis", wikis_path %></li>
-<div class="pull-right user-info">
-				<% if current_user %>
-					Hello <%= current_user.name %>! <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-			<% else %>
-				<%= link_to "Sign In", new_user_session_path %> or
-				<%= link_to "Sign Up", new_user_registration_path %>
-			<% end %>
-		</ul>
+<div class="container-fluid">
+  <ul class="nav nav-tabs">
+    <li><%= link_to "Home", welcome_index_path %></li>
+    <li><%= link_to "Wikis", wikis_path %></li>
+    <div class="pull-right user-info">
+      <% if current_user %>
+        <% if current_user.stripe_card_token.blank? %>
+        (Free Plan)
+    <% else %>
+        (Premium Plan)
+    <% end %>
+      &nbsp;&nbsp;	
+      Hello <%= current_user.name %>! <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+  <% else %>
+        <%= link_to "Sign In", new_user_session_path %> or
+      <%= link_to "Sign Up", new_user_registration_path %>
+    <% end %>
+    </ul>
 
-		<% if flash[:notice] %>
-			<div class="alert alert-success">
-				<button type="button" class="close" data-dismiss="alert">&times;</button>
-				<%= flash[:notice] %>
-			</div>
+    <% if flash[:notice] %>
+      <div class="alert alert-success">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <%= flash[:notice] %>
+    </div>
 
-		<% elsif flash[:error] %>
-			<div class="alert alert-danger">
-				<button type="button" class="close" data-dismiss="alert">&times;</button>
-				<%= flash[:error] %>
-			</div>
+  <% elsif flash[:error] %>
+      <div class="alert alert-danger">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <%= flash[:error] %>
+    </div>
 
-		<% elsif flash[:alert] %>
-		<div class="alert alert-warning">
-			<button type="button" class="close" data-dismiss="alert">&times;</button>
-			<%= flash[:alert] %></div>
-		<% end %>
-		<%= yield %>
-	</div>
+  <% elsif flash[:alert] %>
+      <div class="alert alert-warning">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <%= flash[:alert] %></div>
+  <% end %>
+    <%= yield %>
+  </div>
 
-</body>
-</html>
+  </body>
+  </html>
