@@ -7,7 +7,7 @@ class WikisController < ApplicationController
     else
       @private_wikis = []
     end
-    binding.pry
+
   end
 
   def new
@@ -21,7 +21,6 @@ class WikisController < ApplicationController
     @wiki = Wiki.new(wiki_params)
     #current_user.wikis.build(wiki_params)
     @wiki.user = current_user
-    binding.pry
     if @wiki.save
       flash[:notice] = "Wiki created successfully!"
       redirect_to @wiki
@@ -33,7 +32,7 @@ class WikisController < ApplicationController
 
   def show
     @wiki = Wiki.find(params[:id])
-    @pages = @wiki.pages
+    @pages = @wiki.pages	
   end
 
   def edit
@@ -66,7 +65,7 @@ class WikisController < ApplicationController
   private
 
   def wiki_params
-    params.require(:wiki).permit(:title, :description, :public)
+    params.require(:wiki).permit(:title, :description, :public, collaborator_ids: [])
   end
 end
 

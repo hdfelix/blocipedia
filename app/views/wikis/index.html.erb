@@ -15,21 +15,20 @@
   </div>
 
   <div class="col-md-6">
-    <div class="panel panel-default">
+		<div class="panel panel-default" id="private_wikis">
       <div class="panel-heading text-center"><span style="font-size:28px">My Private wikis</span></div>
       <div class="panel-body">
         <% if current_user %>
-          <% if @private_wikis.count > 0 %>
-          <%= render partial: 'wiki', collection: @private_wikis %>
-      <% else %>
-          <p>You have no private wikis...</p>
-        <%= link_to 'Create a private wiki', new_wiki_path(t: 'premium') %>
-
-      <% end %>
-      <% else %>
-          <p>Sign up for a premium account to create private wikis.</p>
-        <p>If you already have an account, sign in here: <%= link_to "Sign In", new_user_session_path, class: 'btn btn-success' %></p>
-      <% end %>
+          <% if 1 > 0 %>
+						<%= render partial: 'wiki', collection: @private_wikis %>
+					<% else %>
+							<p>You have no private wikis...</p>
+					<% end %>
+				<% else %>
+						<p>Sign up for a premium account to create private wikis.</p>
+					<p>If you already have an account, sign in here: <%= link_to "Sign In", new_user_session_path, class: 'btn btn-success' %></p>
+				<% end %>
+				<%= link_to 'New Private Wiki', new_wiki_path(t: 'premium') %>
       </div>
     </div>
   </div>

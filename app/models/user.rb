@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   has_many :wikis
+  has_and_belongs_to_many :wikis
   validates :name, presence: true
   after_create :create_customer
 

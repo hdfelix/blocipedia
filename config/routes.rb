@@ -1,14 +1,14 @@
 Blocipedia::Application.routes.draw do
 
-	resources :charges, only: [:new, :create]
+  resources :charges, only: [:new, :create]
 
-	resources :wikis do
-		resources :pages, except: [:index], controller: 'wikis/pages'
-	end
+  resources :wikis do
+    resources :pages, except: [:index], controller: 'wikis/pages'
+  end
 
-	#resources :wikis
+  #resources :wikis
 
   get "welcome/index"
   devise_for :users
-	root 'welcome#index'
+  root 'welcome#index'
 end
