@@ -44,7 +44,10 @@ feature 'Premium user manages collaborators' do
 				click_link "#{@wiki.pages.count} pages"
 			end
     end
-		click_link 'Add collaborator'
+		select @user.name, from: :wiki_collaborators
+		save_and_open_page
+		click_button 'Add Collaborators'
+		expect(page).to have_content(@user.name)
 	end
 
   scenario 'User Removes a collaborator successfully'

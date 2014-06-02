@@ -63,7 +63,7 @@
 		<%= form_for @wiki do |f| %>
 			<div class='form-group'>
 			<%= f.label :collaborators %>
-			<%= f.collection_select :collaborator_ids, User.all, :id, :name, {}, {multiple: true} %>
+			<%= f.collection_select :collaborators, User.all, :id, :name, {}, {multiple: true} %>
 			<%= f.submit 'Add Collaborators' %>
 	</div>
 		<% end %>	
