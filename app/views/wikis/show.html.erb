@@ -34,13 +34,13 @@
 
 	<!-- Collaborators -->
 	<div class="col-md-6">
-		<div class="panel panel-default">
+		<div class="panel panel-default" id="collaborators">
 			<div class="panel panel-header text-center">
 				<span style="font-size: 28px">Collaborators</span>
 			</div>
 			<% if @wiki.collaborators.length > 0 %>
 				<% @wiki.collaborators.each do |c| %>	
-					<%= c.name %>
+					<%= c.name %>&nbsp;&nbsp;<%= link_to 'Remove', collaborations_remove_path(c,wiki_id: @wiki.id), controller: 'controller', method: :remove, data: {confirm: 'Are you sure?' } %>
 				<% end %>
 				<!--%= will_paginate @pages %-->
 			<% else %>
@@ -62,8 +62,8 @@
 	<div class="col-md-4 pull-left">
 		<%= form_for @wiki do |f| %>
 			<div class='form-group'>
-			<%= f.label :collaborators %>
-			<%= f.collection_select :collaborators, User.all, :id, :name, {}, {multiple: true} %>
+				<%= f.label :collaborator_ids, "Collaborators " %>
+			<%= f.collection_select :collaborator_ids, wiki_collaborators , :id, :name, {}, {multiple: true} %>
 			<%= f.submit 'Add Collaborators' %>
 	</div>
 		<% end %>	
