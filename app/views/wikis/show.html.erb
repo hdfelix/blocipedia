@@ -23,12 +23,12 @@
 			</div>
 			<% if @wiki.pages.count > 0 %>
 				<%= render @pages %>
-				<!--%= will_paginate @pages %-->
 			<% else %>
 				<br />
 				<h5 class="text-center">This wiki has no content yet.</h5>
 				<br />
 			<% end %>
+			<%= will_paginate @pages %>
 		</div>
 	</div>
 
