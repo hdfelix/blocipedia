@@ -1,10 +1,12 @@
 class WikisController < ApplicationController
   def index
-    @wikis = Wiki.where(public: true).paginate(page: params[:page], per_page: 5)
+    @wikis = Wiki.where(public: true).paginate(page: params[:page_public], per_page: 5)
 
     if (current_user)
-      @private_wikis = Wiki.where('user_id=? AND public=?', current_user.id,false).paginate(page: params[:page], per_page: 5)
-			@collaborations = @private_wikis.where('user_id not in (?)', current_user.id)
+      @private_wikis = Wiki.where('user_id=? AND public=?', current_user.id,false).paginate(page: params[:page_private], per_page: 5)
+			@collaborations = User.find(current_user.id).wikis.paginate(page: params[:page_collabs], per_page: 5)
+			
+
     else
       @private_wikis = []
     end

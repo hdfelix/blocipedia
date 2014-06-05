@@ -12,4 +12,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:name, :stripe_card_token) }
   end
 
+	def after_sign_in_path_for(resource)
+		wikis_path
+	end
 end

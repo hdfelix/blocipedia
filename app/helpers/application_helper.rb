@@ -23,4 +23,13 @@ module ApplicationHelper
 		end	
 		collab
 	end
+
+	def collab_wiki_owner(wiki)
+		wiki_owner = ""
+		unless wiki.user_id == nil
+			u_name = User.find(wiki.user_id).name
+			wiki_owner = "- #{u_name}'s wiki"  
+		end	
+		wiki_owner
+	end
 end

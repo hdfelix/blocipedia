@@ -1,5 +1,6 @@
 <div class="media-body">
-  <h4 class="media-heading"><%= wiki.title %> (<%=link_to "#{wiki.pages.count} #{'page'.pluralize})", wiki %></h4> <span style="color: red"><%= (wiki.public)? "FREE":"" %></span>
+	<h4 class="media-heading">
+		<%= wiki.title %> (<%=link_to "#{wiki.pages.count} #{'page'.pluralize})", wiki %> <span class="small"><%= collab_wiki_owner(wiki) %></span></h4> <span style="color: red"><%= (wiki.public)? "FREE":"" %></span>
   <p class="wiki-description"><%= wiki.description %></p> 
   <%= link_to 'Edit', edit_wiki_path(wiki), class: 'btn btn-success' %>&nbsp;
 	<%= link_to 'Delete', wiki, method: :delete, data: { confirm: 'Are you sure?' } %>

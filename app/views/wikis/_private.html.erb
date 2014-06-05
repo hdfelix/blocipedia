@@ -1,0 +1,35 @@
+
+  <div class="col-md-6">
+		<div class="panel panel-default" id="private_wikis">
+      <div class="panel-heading text-center"><span style="font-size:28px">My Private wikis</span></div>
+      <div class="panel-body">
+        <% if current_user %>
+          <% if private_wikis.count >= 0 %>
+						<%= render partial: 'wiki', collection: private_wikis %>
+					<% else %>
+							<p>You have no private wikis...</p>
+					<% end %>
+				<% else %>
+						<p>Sign up for a premium account to create private wikis.</p>
+					<p>If you already have an account, sign in here: <%= link_to "Sign In", new_user_session_path, class: 'btn btn-success' %></p>
+				<% end %>
+				<span class="pull-left"><%= link_to 'New Private Wiki', new_wiki_path(t: 'premium'), class: 'btn btn-success' %></span>
+				<span class="pull-right"><%= will_paginate private_wikis, param_name: 'page_private' %></span>
+      </div>
+    </div>
+  </div>
+
+	
+  <div class="col-md-6">
+		<div class="panel panel-default" id="collab_wikis">
+      <div class="panel-heading text-center"><span style="font-size:28px">Wikis I Collaborate on</span></div>
+      <div class="panel-body">
+				<% if collaborations.count > 0 %>
+					<%= render partial: 'wiki', collection: collaborations %>
+				<% else %>
+						<p>You are not collaborating on any wikis...</p>
+				<% end %>
+				<%= will_paginate collaborations, param_name: 'page_collabs' %>
+			</div>
+		</div>
+	</div>
