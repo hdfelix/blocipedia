@@ -3,6 +3,7 @@
 		<%= wiki.title %>
 		<% if wiki.public %>
 			(<%=link_to "#{wiki.pages.count} #{'page'.pluralize}", action: :show, id: wiki %>) 
+			<br />
 			<span class="small">
 				<%= collab_wiki_owner(wiki) %>
 			</span>

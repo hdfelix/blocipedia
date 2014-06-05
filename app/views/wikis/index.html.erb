@@ -17,8 +17,12 @@
         <br />
       </div>
     </div>
-  </div>
-	<%= render partial: 'private', locals: {private_wikis: @private_wikis, collaborations: @collaborations} if current_user %>
+	</div>
+	<% if current_user %>
+		<% if current_user.stripe_card_token != "" %>
+			<%= render partial: 'private', locals: {private_wikis: @private_wikis, collaborations: @collaborations} if current_user %>
+		<% end %>
+	<% end %>
 </div>
 
 <div class="row">
