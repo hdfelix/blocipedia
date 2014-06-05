@@ -1,0 +1,20 @@
+
+	<!-- Collaborators -->
+	<div class="col-md-6">
+		<div class="panel panel-default" id="collaborators">
+			<div class="panel panel-header text-center">
+				<span style="font-size: 28px">Collaborators</span>
+			</div>
+			<% if wiki.collaborators.length > 0 %>
+				<% wiki.collaborators.each do |c| %>	
+					<%= c.name %>&nbsp;&nbsp;<%= link_to 'Remove', collaborations_remove_path(c,wiki_id: wiki.id), controller: 'controller', method: :remove, data: {confirm: 'Are you sure?' } %>
+				<% end %>
+				<!--%= will_paginate @pages %-->
+			<% else %>
+				<br />
+				<h5 class="text-center">This wiki has no collaborators yet.</h5>
+				<br />
+			<% end %>
+		</div>
+	</div>
+</div>

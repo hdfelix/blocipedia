@@ -30,47 +30,19 @@
 			<% end %>
 			<%= will_paginate @pages %>
 		</div>
-	</div>
-
-	<!-- Collaborators -->
-	<div class="col-md-6">
-		<div class="panel panel-default" id="collaborators">
-			<div class="panel panel-header text-center">
-				<span style="font-size: 28px">Collaborators</span>
-			</div>
-			<% if @wiki.collaborators.length > 0 %>
-				<% @wiki.collaborators.each do |c| %>	
-					<%= c.name %>&nbsp;&nbsp;<%= link_to 'Remove', collaborations_remove_path(c,wiki_id: @wiki.id), controller: 'controller', method: :remove, data: {confirm: 'Are you sure?' } %>
-				<% end %>
-				<!--%= will_paginate @pages %-->
-			<% else %>
-				<br />
-				<h5 class="text-center">This wiki has no collaborators yet.</h5>
-				<br />
-			<% end %>
+		<div class="col-md-4">
+			<%= link_to "Back", wikis_path, class: 'btn btn-warning' %>
+			<!--% if policy(Page.new).create? %-->
+			<%= link_to "New Page", new_wiki_page_path(@wiki,@page), class: 'btn btn-success pull-right' %>
 		</div>
 	</div>
-</div>
 
-<div class="row">
-	<div class="col-md-2 pull-left">
-		<%= link_to "Back", wikis_path, class: 'btn btn-warning' %>
-		<!--% if policy(Page.new).create? %-->
-		<%= link_to "New Page", new_wiki_page_path(@wiki,@page), class: 'btn btn-success pull-right' %>
-	</div>
-	<div class="col-md-4"></div>
-	<div class="col-md-4 pull-left">
-		<%= form_for @wiki do |f| %>
-			<div class='form-group'>
-				<%= f.label :collaborator_ids, "Collaborators " %>
-			<%= f.collection_select :collaborator_ids, wiki_collaborators , :id, :name, {}, {multiple: true} %>
-			<%= f.submit 'Add Collaborators' %>
-	</div>
-		<% end %>	
-	</div>
-</div>
-		<!--% end %-->
-
-		<!--% if policy(@wiki).destroy? %-->
-		<!--%= link_to "Delete Wiki", @wiki, method: :delete, class: 'btn btn-danger', confirm: 'Are you sure you want to delete this wiki?' %-->
-		<!--% end %-->
+	<% if (params[:t] != nil and params[:t] == 'private') %>
+		<%= collab_area do %>
+			<% if current_user %>
+				<%= render partial: 'collaborators', locals: {wiki: @wiki} %>
+				<br />
+				<%= render partial: 'add_collaborator', locals: { wiki: @wiki } %>
+			<% end %>
+		<% end %>
+	<% end %>

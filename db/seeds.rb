@@ -21,8 +21,8 @@ wiki_count.times do
 	print "."
 	Wiki.create(
 		title:				Faker::Lorem.sentence,
-		description:	Faker::Lorem.paragraph
-		)
+		description:	Faker::Lorem.paragraph,
+		user_id: User.first(order: "RANDOM()").id)
 end
 
 #Adding pages to wikis

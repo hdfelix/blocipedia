@@ -32,4 +32,9 @@ module ApplicationHelper
 		end	
 		wiki_owner
 	end
+
+	def collab_area(&block)
+		content = with_output_buffer(&block)
+		content_tag(:div, content)
+	end
 end

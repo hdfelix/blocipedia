@@ -1,0 +1,10 @@
+<div class="col-md-4 col-md-offset-1">
+		<%= form_for wiki do |f| %>
+			<div class='form-group'>
+				<%= f.label :collaborator_ids, "Users:" %>
+			<%= f.collection_select :collaborator_ids, wiki_collaborators , :id, :name, {}, {multiple: true} %>
+			<%= f.submit 'Add as Collaborators' %>
+	</div>
+		<% end %>	
+	</div>
+</div>
