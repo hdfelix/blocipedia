@@ -4,16 +4,16 @@ jQuery ->
  
 user =
   setupForm: ->
-		alert("is this running?")
+    alert("is this running?")
     $('#new_user').submit ->
-		  alert("inside submit")
+      alert("inside submit")
       $('input[type=submit]').attr('disabled', true)
       if $('#card_number').length
         user.processCard()
-				alert("should have proccesed card")
+        alert("should have proccesed card")
         false
       else
-				alert("no card number")
+        alert("no card number")
         true
  
   processCard: ->
