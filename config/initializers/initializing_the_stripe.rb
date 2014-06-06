@@ -1,6 +1,6 @@
 Rails.configuration.stripe = {
-	publishable_key:	 ENV['STRIPE_PUBLISHABLE_KEY_TEST'],		#ENV['STRIPE_PUBLISHABLE_KEY'],
-	secret_key:				 ENV['STRIPE_SECRET_KEY_TEST']			#ENV['STIPRE_SECRET_KEY'], =>}
+	publishable_key:	 ENV['STRIPE_PUBLISHABLE_KEY'],		#ENV['STRIPE_PUBLISHABLE_KEY'],
+	secret_key:				 ENV['STRIPE_SECRET_KEY']			#ENV['STIPRE_SECRET_KEY'], =>}
 }
 
 #Set our app-stored secret key with Stripe
