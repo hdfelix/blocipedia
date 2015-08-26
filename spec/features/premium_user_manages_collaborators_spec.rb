@@ -45,8 +45,6 @@ feature 'Premium user manages collaborators' do
 				click_link "#{@wiki.pages.count} pages"
 			end
     end
-		#save_and_open_page
-		#binding.pry
 		#find("#wiki_collaborators").find(:xpath, "option['#{@collaborator.name}']")
 		find(:xpath, "option[value = '2']").select_option
 		#find("#wiki_collaborators option[value = @user.name]").select

@@ -6,7 +6,6 @@ class CollaborationsController < ApplicationController
   def create
 		@collaborators = Collaborator.where(id: params[:wiki_collaborators])
 		@wiki.collaborators << @collaborators
-		binding.pry
   end
 
 	def remove
